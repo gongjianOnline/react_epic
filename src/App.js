@@ -1,5 +1,6 @@
 import React,{Suspense,lazy} from "react"
 import {Switch, Route} from "react-router-dom"
+import "./App.css"
 import Header from "./components/Header"
 import Footer from "./components/Footer"
 import Loading from "./components/Loading"
@@ -18,11 +19,13 @@ function App() {
     <div className="App">
       <Header></Header>
       <Suspense fallback={<Loading/>}>
-        <Switch>
-          <Route path='/' exact component={Home}/>
-          <Route path='/history' component={History}/>
-          <Route path='/about' component={About}/>
-        </Switch>
+        <main>
+          <Switch>
+            <Route path='/' exact component={Home}/>
+            <Route path='/history' component={History}/>
+            <Route path='/about' component={About}/>
+          </Switch>
+        </main>
       </Suspense>
       <Footer></Footer>
     </div>
