@@ -26,9 +26,30 @@ function Register(){
     const onFinish = (values) => {
       console.log('Success:', values);
     };
+    // 检查用户名规范
+    const validateUsername = (rule,value)=>{
+      if(/\W/.test(value)){
+        return Promise.reject("只能是字母数字下划线")
+      }
+      if(value.length < 4 || value.length > 10){
+        return Promise.reject("长度为4~10字符")
+      }
+    }
+    // 检查密码规范
+    const validateConfirm = ({getFieldValue})=>({
+      validator(rule,value){
+        console.log(getFieldValue('password'))
+        if(getFieldValue('password') === value){
+          return Promise.resolve()
+        }
+       return  Promise.reject('两次密码不一致')
+      }
+    })
+
     const onFinishFailed = (errorInfo) => {
       console.log('Failed:', errorInfo);
     };
+
   return (
     <Wrapper>
       <Title>注册</Title>
@@ -41,7 +62,10 @@ function Register(){
         <Form.Item
           label="用户名"
           name="username"
-          rules={[{ required: true, message: '请输入用户名！' }]}
+          rules={[
+            { required: true, message: '请输入用户名！' },
+            {validator: validateUsername}
+          ]}
         >
           <Input />
         </Form.Item>
@@ -49,14 +73,20 @@ function Register(){
         <Form.Item
           label="密码"
           name="password"
-          rules={[{ required: true, message: '请输入密码！' }]}
+          rules={[
+            { required: true, message: '请输入密码！' },
+
+          ]}
         >
           <Input.Password />
         </Form.Item>
         <Form.Item
           label="确认密码"
           name="affPassword"
-          rules={[{ required: true, message: '请输入确认密码！' }]}
+          rules={[
+            { required: true, message: '请输入确认密码！'},
+            validateConfirm
+          ]}
         >
           <Input.Password />
         </Form.Item>

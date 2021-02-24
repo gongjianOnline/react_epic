@@ -56,7 +56,7 @@
       <option name="presentableId" value="Default" />
       <updated>1614069062178</updated>
       <workItem from="1614069065140" duration="3180000" />
-      <workItem from="1614127835987" duration="21829000" />
+      <workItem from="1614127835987" duration="24369000" />
     </task>
     <task id="LOCAL-00001" summary="页面架构搭建">
       <created>1614072125442</created>
@@ -149,7 +149,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614149368694</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="重构注册页面,使用antd组件">
+      <created>1614151270361</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1614151270361</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -179,6 +186,7 @@
     <MESSAGE value="解决了mobx设置时视图不更新的问题(新版本更新问题)" />
     <MESSAGE value="mobx全局状态管理系统基本完成" />
     <MESSAGE value="进入了antdUi" />
-    <option name="LAST_COMMIT_MESSAGE" value="进入了antdUi" />
+    <MESSAGE value="重构注册页面,使用antd组件" />
+    <option name="LAST_COMMIT_MESSAGE" value="重构注册页面,使用antd组件" />
   </component>
 </project>
