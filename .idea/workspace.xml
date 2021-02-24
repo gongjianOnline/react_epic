@@ -70,7 +70,7 @@
       <option name="presentableId" value="Default" />
       <updated>1614069062178</updated>
       <workItem from="1614069065140" duration="3180000" />
-      <workItem from="1614127835987" duration="10509000" />
+      <workItem from="1614127835987" duration="14367000" />
     </task>
     <task id="LOCAL-00001" summary="页面架构搭建">
       <created>1614072125442</created>
@@ -128,7 +128,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614138499864</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="对象项目进行了eject,安装了mobx-react">
+      <created>1614142864606</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1614142864606</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -154,6 +161,7 @@
     <MESSAGE value="页面样式完成" />
     <MESSAGE value="引入mobx,创建mobx状态管理器" />
     <MESSAGE value="进入@babel/plugin-proposal-decorators解决mobx中不能使用@的情况" />
-    <option name="LAST_COMMIT_MESSAGE" value="进入@babel/plugin-proposal-decorators解决mobx中不能使用@的情况" />
+    <MESSAGE value="对象项目进行了eject,安装了mobx-react" />
+    <option name="LAST_COMMIT_MESSAGE" value="对象项目进行了eject,安装了mobx-react" />
   </component>
 </project>
