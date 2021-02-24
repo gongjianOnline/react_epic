@@ -13,6 +13,7 @@ body {
     color:#444;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background: #eceff2;
 }
 a{
     color: #111;
@@ -25,9 +26,7 @@ a{
 }
 main{
     flex:1;
-}
-header{
-
+    padding: 30px 100px;
 }
 
 
