@@ -56,7 +56,7 @@
       <option name="presentableId" value="Default" />
       <updated>1614069062178</updated>
       <workItem from="1614069065140" duration="3180000" />
-      <workItem from="1614127835987" duration="24369000" />
+      <workItem from="1614127835987" duration="24473000" />
     </task>
     <task id="LOCAL-00001" summary="页面架构搭建">
       <created>1614072125442</created>
@@ -156,7 +156,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614151270361</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="前端验证表单用户名和确认密码功能">
+      <created>1614153727620</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1614153727620</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -187,6 +194,7 @@
     <MESSAGE value="mobx全局状态管理系统基本完成" />
     <MESSAGE value="进入了antdUi" />
     <MESSAGE value="重构注册页面,使用antd组件" />
-    <option name="LAST_COMMIT_MESSAGE" value="重构注册页面,使用antd组件" />
+    <MESSAGE value="前端验证表单用户名和确认密码功能" />
+    <option name="LAST_COMMIT_MESSAGE" value="前端验证表单用户名和确认密码功能" />
   </component>
 </project>
