@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ec59e53c-a29a-48d8-ad57-f3980e65bc67" name="Default Changelist" comment="" />
+    <list default="true" id="ec59e53c-a29a-48d8-ad57-f3980e65bc67" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,6 +22,29 @@
   </component>
   <component name="GitToolBoxStore">
     <option name="projectConfigVersion" value="2" />
+    <option name="recentBranches">
+      <RecentBranches>
+        <option name="branchesForRepo">
+          <list>
+            <RecentBranchesForRepo>
+              <option name="branches">
+                <list>
+                  <RecentBranch>
+                    <option name="branchName" value="main" />
+                    <option name="lastUsedInstant" value="1614154411" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="master" />
+                    <option name="lastUsedInstant" value="1614154410" />
+                  </RecentBranch>
+                </list>
+              </option>
+              <option name="repositoryRootUrl" value="file://$PROJECT_DIR$" />
+            </RecentBranchesForRepo>
+          </list>
+        </option>
+      </RecentBranches>
+    </option>
   </component>
   <component name="ProjectId" id="1osIqU4BOn743Uun2ZZbDO8bUJP" />
   <component name="ProjectLevelVcsManager">
@@ -53,7 +78,7 @@
       <option name="presentableId" value="Default" />
       <updated>1614069062178</updated>
       <workItem from="1614069065140" duration="3180000" />
-      <workItem from="1614127835987" duration="24680000" />
+      <workItem from="1614127835987" duration="25090000" />
     </task>
     <task id="LOCAL-00001" summary="页面架构搭建">
       <created>1614072125442</created>
@@ -167,7 +192,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614153849923</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="注册样式布局微调">
+      <created>1614154046724</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1614154046724</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
