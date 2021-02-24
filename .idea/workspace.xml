@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ec59e53c-a29a-48d8-ad57-f3980e65bc67" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Register.js" afterDir="false" />
-    </list>
+    <list default="true" id="ec59e53c-a29a-48d8-ad57-f3980e65bc67" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -56,7 +53,7 @@
       <option name="presentableId" value="Default" />
       <updated>1614069062178</updated>
       <workItem from="1614069065140" duration="3180000" />
-      <workItem from="1614127835987" duration="24473000" />
+      <workItem from="1614127835987" duration="24680000" />
     </task>
     <task id="LOCAL-00001" summary="页面架构搭建">
       <created>1614072125442</created>
@@ -163,7 +160,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614153727620</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="注册样式布局微调">
+      <created>1614153849923</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1614153849923</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -195,6 +199,7 @@
     <MESSAGE value="进入了antdUi" />
     <MESSAGE value="重构注册页面,使用antd组件" />
     <MESSAGE value="前端验证表单用户名和确认密码功能" />
-    <option name="LAST_COMMIT_MESSAGE" value="前端验证表单用户名和确认密码功能" />
+    <MESSAGE value="注册样式布局微调" />
+    <option name="LAST_COMMIT_MESSAGE" value="注册样式布局微调" />
   </component>
 </project>
