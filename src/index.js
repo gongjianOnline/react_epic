@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import "./App.css"
+import "antd/dist/antd.css"
 import reportWebVitals from './reportWebVitals';
 import {
   BrowserRouter as Router

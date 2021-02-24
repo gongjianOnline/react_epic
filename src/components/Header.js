@@ -1,6 +1,7 @@
-import React from "react"
+import React,{useState}from "react"
 import {NavLink} from "react-router-dom"
 import styled from "styled-components";
+import {Button} from "antd";
 
 const Header = styled.header`
   background: #02101f;
@@ -10,6 +11,10 @@ const Header = styled.header`
   justify-content: space-between;
   color: #fff;
 `;
+const Nav = styled.nav`
+  display: flex;
+  align-items: center;
+`
 const Logo = styled.div`
   color: #fff;
   height: 30px;
@@ -23,29 +28,33 @@ const StyledLink = styled(NavLink)`
   }
 `;
 const Login = styled.div`
-  marigin-left:auto
+  margin-left:20px
 `
-const Button = styled.button`
+const StyleButton = styled(Button)`
   margin-left: 10px;
 `
-
 function Component(){
+  const [isLogin,setIsLogin] = useState(false)
   return(
     <Header>
       <Logo>logo</Logo>
-      <nav>
+      <Nav>
         <StyledLink to='/' activeClassName="active" exact>首页</StyledLink>
         <StyledLink to='/history'>上传历史</StyledLink>
         <StyledLink to='/about'>关于</StyledLink>
-      </nav>
-      <Login>
-        <Button>
-          <StyledLink to="/login">登录</StyledLink>
-        </Button>
-        <Button>
-          <StyledLink to="/register">注册</StyledLink>
-        </Button>
-      </Login>
+        <Login>
+          {
+            isLogin?<>
+              饥人谷
+              <StyleButton onClick={()=>setIsLogin(false)}>注销</StyleButton>
+            </>:<>
+              <StyleButton type="primary" onClick={()=>setIsLogin(true)}>登录</StyleButton>
+              <StyleButton type="primary" >注册</StyleButton>
+            </>
+          }
+
+        </Login>
+      </Nav>
     </Header>
   )
 }
