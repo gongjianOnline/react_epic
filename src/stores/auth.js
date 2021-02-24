@@ -1,19 +1,22 @@
 /*
 *   作用: 专门用来维护注册和登录的状态和行为
 * */
-import {observable,action} from "mobx";
+import {observable, action, makeObservable} from "mobx";
 class AuthStore {
+  constructor() {
+    makeObservable(this)
+  }
   @observable isLogin = false;
   @observable isLoading = false;
   @observable values = {
-    username:"",
+    username:"jirengu",
     password:""
   }
   @action setIsLogin(isLogin){
     this.isLogin = isLogin;
   }
   @action setUsername(username){
-    this.value.username = username
+    this.values.username = username
   }
   @action setPassword(password){
     this.values.password = password
@@ -40,4 +43,4 @@ class AuthStore {
     console.log("已注销")
   }
 }
-export default  AuthStore
+export {AuthStore}
