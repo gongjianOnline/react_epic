@@ -6,7 +6,6 @@ const Home = observer(()=>{
   return(
     <>
       <h1>
-        Hello
         {
           UserStore.currentUser ? <>
             Hello {UserStore.currentUser.attributes.username}
