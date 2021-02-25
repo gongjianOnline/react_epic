@@ -1,5 +1,5 @@
 import React from "react"
-import { Form, Input, Button, Checkbox } from 'antd';
+import { Form, Input, Button } from 'antd';
 import styled from "styled-components"
 
 const Wrapper = styled.div`
@@ -90,11 +90,6 @@ function Register(){
         >
           <Input.Password />
         </Form.Item>
-
-        <Form.Item {...tailLayout} name="remember" valuePropName="checked">
-          <Checkbox>记住密码</Checkbox>
-        </Form.Item>
-
         <Form.Item {...tailLayout}>
           <Button type="primary" htmlType="submit">
             注册

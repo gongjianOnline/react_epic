@@ -1,4 +1,4 @@
-import React,{useState}from "react"
+import React from "react"
 import {NavLink} from "react-router-dom"
 import styled from "styled-components";
 import {Button} from "antd";
@@ -34,7 +34,6 @@ const StyleButton = styled(Button)`
   margin-left: 10px;
 `
 function Component(){
-  const [isLogin,setIsLogin] = useState(false)
   return(
     <Header>
       <Logo>logo</Logo>
@@ -43,16 +42,9 @@ function Component(){
         <StyledLink to='/history'>上传历史</StyledLink>
         <StyledLink to='/about'>关于</StyledLink>
         <Login>
-          {
-            isLogin?<>
-              饥人谷
-              <StyleButton onClick={()=>setIsLogin(false)}>注销</StyleButton>
-            </>:<>
-              <StyleButton type="primary" onClick={()=>setIsLogin(true)}>登录</StyleButton>
-              <StyleButton type="primary" >注册</StyleButton>
-            </>
-          }
-
+          <StyleButton>注销</StyleButton>
+          <NavLink to='/login'><StyleButton>登录</StyleButton></NavLink>
+          <NavLink to='/register'><StyleButton type="primary" >注册</StyleButton></NavLink>
         </Login>
       </Nav>
     </Header>

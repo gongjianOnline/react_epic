@@ -2,14 +2,10 @@
 *   作用: 专门用来维护注册和登录的状态和行为
 * */
 import {observable, action, makeObservable} from "mobx";
+import {Auth} from "../models/index"
 class AuthStore {
-  constructor() {
-    makeObservable(this)
-  }
-  @observable isLogin = false;
-  @observable isLoading = false;
   @observable values = {
-    username:"jirengu",
+    username:"",
     password:""
   }
   @action setIsLogin(isLogin){
@@ -22,13 +18,13 @@ class AuthStore {
     this.values.password = password
   }
   @action login(){
-    console.log('登录中...')
-    this.isLoading = true;
-    setTimeout(()=>{
-      console.log('登录成功')
-      this.isLogin = true
-      this.isLoading = false
-    },1000)
+    Auth.login(this.values.username,this.values.password).then((user)=>{
+      console.log("登陆成功")
+      console.log(user)
+    }).catch((error)=>{
+      console.log("登陆失败")
+      console.log(error)
+    })
   }
   @action reqister(){
     console.log('注册中...')
