@@ -2,6 +2,8 @@ import React from "react"
 import {NavLink} from "react-router-dom"
 import styled from "styled-components";
 import {Button} from "antd";
+import {useStores} from "../stores/index";
+import {observer} from "mobx-react"
 
 const Header = styled.header`
   background: #02101f;
@@ -30,10 +32,20 @@ const StyledLink = styled(NavLink)`
 const Login = styled.div`
   margin-left:20px
 `
-const StyleButton = styled(Button)`
+const StyledButton = styled(Button)`
   margin-left: 10px;
 `
-function Component(){
+const Component = observer(()=>{
+  const {UserStore,AuthStore} = useStores();
+  const handleLogout = ()=>{
+    AuthStore.logout()
+  };
+  const handleLogin = ()=>{
+    console.log("跳轉到登錄頁")
+  };
+  const handleRegister = ()=>{
+    console.log("跳转到注册页")
+  };
   return(
     <Header>
       <Logo>logo</Logo>
@@ -42,12 +54,18 @@ function Component(){
         <StyledLink to='/history'>上传历史</StyledLink>
         <StyledLink to='/about'>关于</StyledLink>
         <Login>
-          <StyleButton>注销</StyleButton>
-          <NavLink to='/login'><StyleButton>登录</StyleButton></NavLink>
-          <NavLink to='/register'><StyleButton type="primary" >注册</StyleButton></NavLink>
+          {
+            UserStore.currentUser ? <>
+              {UserStore.currentUser.attributes.username} <StyledButton type="primary" onClick={handleLogout}>注销</StyledButton>
+            </> :<>
+              <StyledButton type="primary" onClick={handleLogin}>登录</StyledButton>
+              <StyledButton type="primary" onClick={handleRegister}>注册</StyledButton>
+            </>
+
+          }
         </Login>
       </Nav>
     </Header>
   )
-}
+})
 export default Component

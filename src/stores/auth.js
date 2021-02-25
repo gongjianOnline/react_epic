@@ -1,9 +1,13 @@
 /*
 *   作用: 专门用来维护注册和登录的状态和行为
 * */
-import {observable, action} from "mobx";
+import {observable, action,makeObservable} from "mobx";
 import Auth from "../models/index"
+import UserStore from "./user";
 class AuthStore {
+  constructor() {
+    makeObservable(this)
+  }
   @observable values = {
     username:"",
     password:""
@@ -20,10 +24,10 @@ class AuthStore {
   @action login(){
     return new Promise((resolve,reject)=>{
       Auth.login(this.values.username,this.values.password).then((user)=>{
-        console.log("登录成功")
+        UserStore.pullUser()
         resolve(user)
       }).catch((error)=>{
-        console.log("登录失败")
+        UserStore.resetUser()
         reject(error)
       })
     })
@@ -31,14 +35,17 @@ class AuthStore {
   @action register(){
     return new Promise((resolve,reject)=>{
       Auth.register(this.values.username,this.values.password).then((user)=>{
+        UserStore.pullUser()
         resolve(user)
       }).catch((error)=>{
+        UserStore.resetUser()
         reject(error)
       })
     })
   }
   @action logout(){
-    Auth.logout()
+    Auth.logout();
+    UserStore.resetUser()
   }
 }
-export {AuthStore}
+export default new AuthStore()
