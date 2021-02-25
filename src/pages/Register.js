@@ -25,14 +25,13 @@ function Register(){
       wrapperCol: { offset: 6, span: 18 },
     };
     const onFinish = (values) => {
-      console.log(values)
       console.log('Success:', values);
-      AuthStore.setUsername(values.username)
-      AuthStore.setPassword(values.password)
-      AuthStore.login().then(()=>{
-        console.log("注册成功,跳转到首页")
+      AuthStore.setUsername(values.username);
+      AuthStore.setPassword(values.password);
+      AuthStore.register().then(()=>{
+        console.log("注册成功")
       }).catch(()=>{
-        console.log("注册失败,啥都不做")
+        console.log("失败")
       })
     };
     // 检查用户名规范
