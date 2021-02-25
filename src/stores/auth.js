@@ -18,25 +18,29 @@ class AuthStore {
     this.values.password = password
   }
   @action login(){
-    Auth.login(this.values.username,this.values.password).then((user)=>{
-      console.log("登陆成功")
-      console.log(user)
-    }).catch((error)=>{
-      console.log("登陆失败")
-      console.log(error)
+    return new Promise((resolve,reject)=>{
+      Auth.login(this.values.username,this.values.password).then((user)=>{
+        console.log("登录成功")
+        resolve(user)
+      }).catch((error)=>{
+        console.log("登录失败")
+        reject(error)
+      })
     })
   }
   @action reqister(){
-    console.log('注册中...')
-    this.isLoading = true;
-    setTimeout(()=>{
-      console.log('注册成功')
-      this.isLogin = true
-      this.isLoading = false
-    },1000)
+    return new Promise((resolve,reject)=>{
+      Auth.register(this.values.username,this.values.password).then((user)=>{
+        console.log("注册成功")
+        resolve(user)
+      }).catch((error)=>{
+        console.log("注册失败")
+        reject(error)
+      })
+    })
   }
   @action logout(){
-    console.log("已注销")
+    Auth.logout()
   }
 }
 export {AuthStore}
