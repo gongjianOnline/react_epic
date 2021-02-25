@@ -1,7 +1,7 @@
 import React from "react"
 import { Form, Input, Button } from 'antd';
 import styled from "styled-components"
-
+import {useStores} from "../stores/index"
 const Wrapper = styled.div`
   max-width: 600px;
   margin: 30px auto;
@@ -16,6 +16,7 @@ const Title = styled.h1`
 
 
 function Register(){
+    const {AuthStore} = useStores()
     const layout = {
       labelCol: { span: 6 },
       wrapperCol: { span: 18 },
@@ -24,7 +25,15 @@ function Register(){
       wrapperCol: { offset: 6, span: 18 },
     };
     const onFinish = (values) => {
+      console.log(values)
       console.log('Success:', values);
+      AuthStore.setUsername(values.username)
+      AuthStore.setPassword(values.password)
+      AuthStore.login().then(()=>{
+        console.log("注册成功,跳转到首页")
+      }).catch(()=>{
+        console.log("注册失败,啥都不做")
+      })
     };
     // 检查用户名规范
     const validateUsername = (rule,value)=>{
@@ -34,11 +43,11 @@ function Register(){
       if(value.length < 4 || value.length > 10){
         return Promise.reject("长度为4~10字符")
       }
+      return Promise.resolve();
     }
-    // 检查密码规范
+    // 检查密码是否一致
     const validateConfirm = ({getFieldValue})=>({
       validator(rule,value){
-        console.log(getFieldValue('password'))
         if(getFieldValue('password') === value){
           return Promise.resolve()
         }
@@ -75,7 +84,6 @@ function Register(){
           name="password"
           rules={[
             { required: true, message: '请输入密码！' },
-
           ]}
         >
           <Input.Password />
