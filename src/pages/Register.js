@@ -2,6 +2,7 @@ import React from "react"
 import { Form, Input, Button } from 'antd';
 import styled from "styled-components"
 import {useStores} from "../stores/index"
+import {useHistory} from "react-router-dom";
 const Wrapper = styled.div`
   max-width: 600px;
   margin: 30px auto;
@@ -16,6 +17,7 @@ const Title = styled.h1`
 
 
 function Register(){
+    const history = useHistory()
     const {AuthStore} = useStores()
     const layout = {
       labelCol: { span: 6 },
@@ -30,6 +32,7 @@ function Register(){
       AuthStore.setPassword(values.password);
       AuthStore.register().then(()=>{
         console.log("注册成功")
+        history.push('/')
       }).catch(()=>{
         console.log("失败")
       })

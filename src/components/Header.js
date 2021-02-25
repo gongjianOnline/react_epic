@@ -1,9 +1,10 @@
 import React from "react"
-import {NavLink} from "react-router-dom"
+import {NavLink,useHistory} from "react-router-dom"
 import styled from "styled-components";
 import {Button} from "antd";
 import {useStores} from "../stores/index";
 import {observer} from "mobx-react"
+
 
 const Header = styled.header`
   background: #02101f;
@@ -36,15 +37,18 @@ const StyledButton = styled(Button)`
   margin-left: 10px;
 `
 const Component = observer(()=>{
+  const history = useHistory()
   const {UserStore,AuthStore} = useStores();
   const handleLogout = ()=>{
     AuthStore.logout()
   };
   const handleLogin = ()=>{
     console.log("跳轉到登錄頁")
+    history.push('/login')
   };
   const handleRegister = ()=>{
-    console.log("跳转到注册页")
+    console.log("跳转到注册页");
+    history.push('/register')
   };
   return(
     <Header>
