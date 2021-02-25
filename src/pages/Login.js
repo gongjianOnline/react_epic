@@ -1,7 +1,7 @@
 import React from "react"
 import { Form, Input, Button, Checkbox } from 'antd';
 import styled from "styled-components"
-
+import {useStores} from "../stores/index"
 const Wrapper = styled.div`
   max-width: 600px;
   margin: 30px auto;
@@ -23,8 +23,16 @@ function Register(){
   const tailLayout = {
     wrapperCol: { offset: 6, span: 18 },
   };
+  const {AuthStore} = useStores()
   const onFinish = (values) => {
     console.log('Success:', values);
+    AuthStore.setUsername((values.username));
+    AuthStore.setPassword(values.password)
+    AuthStore.login().then(()=>{
+      console.log('登录成功')
+    }).catch(()=>{
+      console.log('登录失败')
+    })
   };
   const onFinishFailed = (errorInfo) => {
     console.log('Failed:', errorInfo);
