@@ -52,7 +52,7 @@ const Uploader = {
     })
   },
   /*查找历史*/
-  find(page=0,limit=10){
+  find({page=0,limit=10}){
     const query = new AV.Query("Image")
     query.include('owner');
     query.limit(limit);
@@ -65,11 +65,10 @@ const Uploader = {
         reject(error)
       })
     })
-
-
   }
-}
 
+
+}
 /**/
 
 export {Auth,Uploader};

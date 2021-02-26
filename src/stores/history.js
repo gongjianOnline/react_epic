@@ -9,7 +9,7 @@ class HistoryStore {
   constructor() {
     makeObservable(this)
   }
-  @observable Llis = [];
+  @observable list = [];
   @observable isLoading = false;
   @observable hasMore = true;
   @observable page = 0;
@@ -31,14 +31,12 @@ class HistoryStore {
         this.hasMore = false
       }
     }).catch((error)=>{
+      console.log(error)
       message.error("加载失败")
     }).finally(()=>{
       this.isLoading = false;
     })
   }
-
-
-
-
 }
+
 export default new HistoryStore()
