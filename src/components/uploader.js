@@ -1,6 +1,6 @@
 import React,{useRef} from "react"
 import {useStores} from "../stores";
-import {observer} from "mobx-react"
+import {observer,useLocalStore} from "mobx-react"
 import { Upload, message } from 'antd';
 import { InboxOutlined } from '@ant-design/icons';
 import styled from "styled-components"
@@ -19,9 +19,36 @@ const Image = styled.img`
 `
 
 const  Component = observer(()=>{
-  const {ImageStore,UserStore} = useStores()
+  const {ImageStore,UserStore} = useStores();
+  const ref1 = useRef();
+  const ref2 = useRef();
+  const store = useLocalStore(()=>({
+    width:null,
+    setwidth(width){
+      store.width = width
+    },
+    get widthStr(){
+      return store.width?`/w/${store.width}`:''
+    },
+    height:null,
+    setheight(height){
+      store.height = height
+    },
+    get heightStr(){
+      return store.height?`/h/${store.height}`:''
+    },
+    get getFullStr(){
+      return ImageStore.serverFile.attributes.url.attributes.url + '?imageView2/0' + store.widthStr + store.heightStr
+    }
+  }))
   const ref = useRef()
   const { Dragger } = Upload;
+  const bindWidthChange = ()=>{
+    store.setwidth(ref1.current.value)
+  };
+  const bindHeightChange = ()=>{
+    store.setheight(ref2.current.value)
+  };
   const props = {
     showUploadList:false,
     beforeUpload: (file)=>{
@@ -43,41 +70,46 @@ const  Component = observer(()=>{
   };
   return (
     <>
-    <div>
-      <Dragger {...props}>
-        <p className="ant-upload-drag-icon">
-          <InboxOutlined />
-        </p>
-        <p className="ant-upload-text">Click or drag file to this area to upload</p>
-        <p className="ant-upload-hint">
-          Support for a single or bulk upload. Strictly prohibit from uploading company data or other
-          band files
-        </p>
-      </Dragger>
-    </div>
+      <div>
+        <Dragger {...props}>
+          <p className="ant-upload-drag-icon">
+            <InboxOutlined />
+          </p>
+          <p className="ant-upload-text">Click or drag file to this area to upload</p>
+          <p className="ant-upload-hint">
+            Support for a single or bulk upload. Strictly prohibit from uploading company data or other
+            band files
+          </p>
+        </Dragger>
+      </div>
 
-    {
-      ImageStore.serverFile ? <Result>
-        <H1>上传结果</H1>
-        <dl>
-          <dt>完整路径</dt>
-          <dd>
-            <a target="_blank" href={ImageStore.serverFile.attributes.url.attributes.url}>
-              {ImageStore.serverFile.attributes.url.attributes.url}
-            </a>
-          </dd>
-          <dt>文件名</dt>
-          <dd>{ImageStore.filename}</dd>
-          <dt>图片预览</dt>
-          <dd>
-            <Image src={ImageStore.serverFile.attributes.url.attributes.url} alt="图片预览"/>
-          </dd>
-          <dt>尺寸定制</dt>
-          <dt>更多尺寸</dt>
-          <dt>...</dt>
-        </dl>
-      </Result> : null
-    }
+      {
+        ImageStore.serverFile ? <Result>
+          <H1>上传结果</H1>
+          <dl>
+            <dt>完整路径</dt>
+            <dd>
+              <a target="_blank" href={ImageStore.serverFile.attributes.url.attributes.url}>
+                {ImageStore.serverFile.attributes.url.attributes.url}
+              </a>
+            </dd>
+            <dt>文件名</dt>
+            <dd>{ImageStore.filename}</dd>
+            <dt>图片预览</dt>
+            <dd>
+              <Image src={ImageStore.serverFile.attributes.url.attributes.url} alt="图片预览"/>
+            </dd>
+            <dt>更多尺寸</dt>
+            <dd>
+              <input ref={ref1} onChange={bindWidthChange} type="text" placeholder="最大宽度(可选)"/>
+              <input ref={ref2} onChange={bindHeightChange} type="text" placeholder="最大高度(可选)"/>
+            </dd>
+            <dd>
+              <a target='_blank' href={store.getFullStr}>{store.getFullStr}</a>
+            </dd>
+          </dl>
+        </Result> : null
+      }
     </>
   )
 })
