@@ -14,8 +14,8 @@ const Home = observer(()=>{
             用户未登录
           </>
         }
-        <Uploader></Uploader>
       </h1>
+      <Uploader></Uploader>
     </>
   )
 })
