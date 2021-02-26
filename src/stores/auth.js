@@ -4,6 +4,8 @@
 import {observable, action,makeObservable} from "mobx";
 import {Auth} from "../models/index"
 import UserStore from "./user";
+import {message} from "antd";
+
 class AuthStore {
   constructor() {
     makeObservable(this)
@@ -28,6 +30,7 @@ class AuthStore {
         resolve(user)
       }).catch((error)=>{
         UserStore.resetUser()
+        message.error("登录失败")
         reject(error)
       })
     })
@@ -39,6 +42,7 @@ class AuthStore {
         resolve(user)
       }).catch((error)=>{
         UserStore.resetUser()
+        message.error("注册失败")
         reject(error)
       })
     })
