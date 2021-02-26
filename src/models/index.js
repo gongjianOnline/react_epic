@@ -5,7 +5,7 @@ AV.init({
   appKey: "n7MQNhmiQRqaL4EwWC0AjFOq",
   serverURL: "https://3pnpm91y.lc-cn-n1-shared.com"
 });
-
+/*登录注册*/
 const Auth = {
   register(username, password) {
     let user = new User();
@@ -33,5 +33,25 @@ const Auth = {
 
 }
 
+/*文件存储*/
+const Uploader = {
+  add(file,filename){
+    const item = new AV.Object('Image');
+    const avFile = new AV.File(filename,file)
+    item.set('filename',filename);
+    item.set('owner',AV.User.current());
+    item.set('url',avFile)
+    return new Promise((resolve,reject)=>{
+      item.save().then((serverFile)=>{
+        console.log("保存成功")
+        resolve(serverFile)
+      },error=>{
+        console.log("保存失败")
+        reject(error)
+      })
+    })
+
+  }
+}
 
 export default Auth;
