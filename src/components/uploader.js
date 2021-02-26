@@ -6,7 +6,7 @@ import { InboxOutlined } from '@ant-design/icons';
 
 
 const  Component = observer(()=>{
-  const {ImageStore} = useStores()
+  const {ImageStore,UserStore} = useStores()
   const ref = useRef()
   const { Dragger } = Upload;
   const props = {
@@ -15,6 +15,10 @@ const  Component = observer(()=>{
       console.log(file)
       ImageStore.setFile(file);
       ImageStore.setFilename(file.name);
+      if(UserStore.currentUser === null){
+        message.warning('请先登录再上传');
+        return false
+      }
       ImageStore.upload().then((serverFile)=>{
         console.log('上传成功')
         console.log(serverFile)
