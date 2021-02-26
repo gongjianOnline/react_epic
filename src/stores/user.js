@@ -1,5 +1,5 @@
 /*
-*   作用: 专门用来维护注册和登录的状态和行为
+*   作用: 专门用来获取用户的登录状态和用户信息
 * */
 import {observable, action,makeObservable} from "mobx";
 import Auth from "../models/index"

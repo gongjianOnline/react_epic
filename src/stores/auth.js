@@ -2,7 +2,7 @@
 *   作用: 专门用来维护注册和登录的状态和行为
 * */
 import {observable, action,makeObservable} from "mobx";
-import Auth from "../models/index"
+import {Auth} from "../models/index"
 import UserStore from "./user";
 class AuthStore {
   constructor() {

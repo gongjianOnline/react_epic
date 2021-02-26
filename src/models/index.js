@@ -54,4 +54,4 @@ const Uploader = {
   }
 }
 
-export default Auth;
+export {Auth,Uploader};
