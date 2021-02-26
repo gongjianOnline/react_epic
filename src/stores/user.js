@@ -2,7 +2,7 @@
 *   作用: 专门用来获取用户的登录状态和用户信息
 * */
 import {observable, action,makeObservable} from "mobx";
-import Auth from "../models/index"
+import {Auth} from "../models/index"
 class UserStore {
   constructor() {
     makeObservable(this)
