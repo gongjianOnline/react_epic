@@ -59,6 +59,14 @@ const  Component = observer(()=>{
         message.warning('请先登录再上传');
         return false
       }
+      if(!/(svg$)|(png$)|(jpg$)|(jpeg$)|(gif$)/ig.test(file.type)){
+        message.error('只能上传png/svg/jpg/gif格式的图片');
+        return false
+      }
+      if(file.size > 1024*1024){
+        message.error('图片最大1M');
+        return false
+      }
       ImageStore.upload().then((serverFile)=>{
         console.log('上传成功')
         console.log(serverFile)
@@ -75,10 +83,9 @@ const  Component = observer(()=>{
           <p className="ant-upload-drag-icon">
             <InboxOutlined />
           </p>
-          <p className="ant-upload-text">Click or drag file to this area to upload</p>
+          <p className="ant-upload-text">点击或拖拽上传图片</p>
           <p className="ant-upload-hint">
-            Support for a single or bulk upload. Strictly prohibit from uploading company data or other
-            band files
+            仅支持 .png/.svg/.jpg/.gif 格式的图片,图片最大1M
           </p>
         </Dragger>
       </div>
