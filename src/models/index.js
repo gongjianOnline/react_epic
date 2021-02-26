@@ -50,8 +50,26 @@ const Uploader = {
         reject(error)
       })
     })
+  },
+  /*查找历史*/
+  find(page=0,limit=10){
+    const query = new AV.Query("Image")
+    query.include('owner');
+    query.limit(limit);
+    query.skip(page*limit);
+    query.equalTo('owner',AV.User.current());
+    return new Promise((resolve,reject)=>{
+      query.find().then((resulte)=>{
+        resolve(resulte)
+      }).catch((error)=>{
+        reject(error)
+      })
+    })
+
 
   }
 }
+
+/**/
 
 export {Auth,Uploader};
