@@ -1,4 +1,4 @@
-import React from "react"
+import React,{useEffect} from "react"
 import {observer} from"mobx-react"
 import {useStores} from "../stores"
 import { List, message, Avatar, Spin } from 'antd';
@@ -6,7 +6,10 @@ import InfiniteScroll from 'react-infinite-scroller';
 import styled from "styled-components"
 
 const Img = styled.img`
-  height: 100px;
+  width: 100px;
+  height: 120px;
+  object-fit:contain;
+  border:1px solid #eee;
 `
 
 const Component = observer(()=>{
@@ -20,6 +23,16 @@ const Component = observer(()=>{
     loadMore:loadMore,
     useWindow:true
   }
+  useEffect(()=>{
+    console.log("进入组件")
+
+
+    return ()=>{
+      console.log("列表组件卸载");
+      HistoryStore.reset();
+    }
+  },[])
+
   return (
     <>
       <InfiniteScroll {...options}
@@ -36,7 +49,7 @@ const Component = observer(()=>{
                   <h5>{item.attributes.filename}</h5>
                 </div>
                 <div>
-                  <a target="_blank" href="item.attributes.url.attributes.url">查看</a>
+                  <a target="_blank" href={item.attributes.url.attributes.url}>查看</a>
                 </div>
               </List.Item>
             }

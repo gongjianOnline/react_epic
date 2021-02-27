@@ -5,6 +5,7 @@ import {observable, action,makeObservable} from "mobx";
 import {Uploader} from "../models/index"
 import {message} from "antd";
 
+
 class ImageStores {
   constructor() {
     makeObservable(this)
@@ -38,6 +39,11 @@ class ImageStores {
       })
     })
 
+  }
+
+  @action reset(){
+    this.isUploading = false;
+    this.serverFile = null;
   }
 
 }
