@@ -67,9 +67,9 @@ function Register(){
           <Input.Password />
         </Form.Item>
 
-        <Form.Item {...tailLayout} name="remember" valuePropName="checked">
-          <Checkbox>记住密码</Checkbox>
-        </Form.Item>
+        {/*<Form.Item {...tailLayout} name="remember" valuePropName="checked">*/}
+        {/*  <Checkbox>记住密码</Checkbox>*/}
+        {/*</Form.Item>*/}
 
         <Form.Item {...tailLayout}>
           <Button type="primary" htmlType="submit">
