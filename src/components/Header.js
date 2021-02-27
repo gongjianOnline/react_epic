@@ -52,11 +52,15 @@ const Component = observer(()=>{
   };
   return(
     <Header>
-      <Logo>logo</Logo>
+      <Logo>
+        <svg className="icon iconLogn" aria-hidden="true">
+          <use xlinkHref="#icon-tu"></use>
+        </svg>
+      </Logo>
       <Nav>
         <StyledLink to='/' activeClassName="active" exact>首页</StyledLink>
         <StyledLink to='/history'>上传历史</StyledLink>
-        <StyledLink to='/about'>关于</StyledLink>
+        {/*<StyledLink to='/about'>关于</StyledLink>*/}
         <Login>
           {
             UserStore.currentUser ? <>
