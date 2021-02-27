@@ -1,7 +1,8 @@
 import React from "react"
-import { Form, Input, Button, Checkbox } from 'antd';
+import { Form, Input, Button } from 'antd';
 import styled from "styled-components"
-
+import {useStores} from "../stores/index"
+import {useHistory} from "react-router-dom";
 const Wrapper = styled.div`
   max-width: 600px;
   margin: 30px auto;
@@ -16,6 +17,8 @@ const Title = styled.h1`
 
 
 function Register(){
+    const history = useHistory()
+    const {AuthStore} = useStores()
     const layout = {
       labelCol: { span: 6 },
       wrapperCol: { span: 18 },
@@ -25,6 +28,14 @@ function Register(){
     };
     const onFinish = (values) => {
       console.log('Success:', values);
+      AuthStore.setUsername(values.username);
+      AuthStore.setPassword(values.password);
+      AuthStore.register().then(()=>{
+        console.log("注册成功")
+        history.push('/')
+      }).catch(()=>{
+        console.log("失败")
+      })
     };
     // 检查用户名规范
     const validateUsername = (rule,value)=>{
@@ -34,11 +45,11 @@ function Register(){
       if(value.length < 4 || value.length > 10){
         return Promise.reject("长度为4~10字符")
       }
+      return Promise.resolve();
     }
-    // 检查密码规范
+    // 检查密码是否一致
     const validateConfirm = ({getFieldValue})=>({
       validator(rule,value){
-        console.log(getFieldValue('password'))
         if(getFieldValue('password') === value){
           return Promise.resolve()
         }
@@ -75,7 +86,6 @@ function Register(){
           name="password"
           rules={[
             { required: true, message: '请输入密码！' },
-
           ]}
         >
           <Input.Password />
@@ -90,11 +100,6 @@ function Register(){
         >
           <Input.Password />
         </Form.Item>
-
-        <Form.Item {...tailLayout} name="remember" valuePropName="checked">
-          <Checkbox>记住密码</Checkbox>
-        </Form.Item>
-
         <Form.Item {...tailLayout}>
           <Button type="primary" htmlType="submit">
             注册

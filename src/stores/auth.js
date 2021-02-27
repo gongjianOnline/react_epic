@@ -1,15 +1,19 @@
 /*
 *   作用: 专门用来维护注册和登录的状态和行为
 * */
-import {observable, action, makeObservable} from "mobx";
+import {observable, action,makeObservable} from "mobx";
+import {Auth} from "../models/index"
+import UserStore from "./user";
+import HistoryStore from "./history"
+import ImageStores from "./image"
+import {message} from "antd";
+
 class AuthStore {
   constructor() {
     makeObservable(this)
   }
-  @observable isLogin = false;
-  @observable isLoading = false;
   @observable values = {
-    username:"jirengu",
+    username:"",
     password:""
   }
   @action setIsLogin(isLogin){
@@ -22,25 +26,37 @@ class AuthStore {
     this.values.password = password
   }
   @action login(){
-    console.log('登录中...')
-    this.isLoading = true;
-    setTimeout(()=>{
-      console.log('登录成功')
-      this.isLogin = true
-      this.isLoading = false
-    },1000)
+    return new Promise((resolve,reject)=>{
+      Auth.login(this.values.username,this.values.password).then((user)=>{
+        UserStore.pullUser()
+        resolve(user)
+      }).catch((error)=>{
+        UserStore.resetUser()
+        message.error("登录失败")
+        reject(error)
+      })
+    })
   }
-  @action reqister(){
-    console.log('注册中...')
-    this.isLoading = true;
-    setTimeout(()=>{
-      console.log('注册成功')
-      this.isLogin = true
-      this.isLoading = false
-    },1000)
+  @action register(){
+    return new Promise((resolve,reject)=>{
+      Auth.register(this.values.username,this.values.password).then((user)=>{
+        UserStore.pullUser()
+        resolve(user)
+      }).catch((error)=>{
+        UserStore.resetUser()
+        message.error("注册失败")
+        reject(error)
+      })
+    })
   }
   @action logout(){
-    console.log("已注销")
+    Auth.logout();
+    UserStore.resetUser();
+    HistoryStore.reset();
+    ImageStores.reset();
   }
+
+
+
 }
-export {AuthStore}
+export default new AuthStore()
